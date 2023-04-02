@@ -9,6 +9,7 @@ import {
   Text,
   Spinner,
   Heading,
+  useToast,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
@@ -19,6 +20,7 @@ export default function Index() {
   const [searchKey, setSearchKey] = useState("");
   const [heroes, setHeroes] = useState<Hero[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const toast = useToast();
 
   const doSearch = async () => {
     await fetch(`/api/search?searchKey=${searchKey}`)
@@ -29,7 +31,11 @@ export default function Index() {
       })
       .then((result: { heroes: Hero[] }) => setHeroes(result.heroes))
       .catch((error: unknown) => {
-        console.log(error);
+        toast({
+          status: "error",
+          title: "Error",
+          duration: 2000,
+        });
       });
 
     setIsLoading(false);
