@@ -10,6 +10,7 @@ import {
   Spinner,
   Heading,
   useToast,
+  Button,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
@@ -58,14 +59,26 @@ export default function Index() {
           <Stack padding={2} w="70%">
             <Box height="10vh" width="50%">
               <form onSubmit={handleSubmit}>
-                <Input
-                  type="text"
-                  name="searchKey"
-                  value={searchKey}
-                  placeholder="Search hero by name"
-                  size="lg"
-                  onChange={(event) => setSearchKey(event.target.value)}
-                />
+                <Flex direction="row">
+                  <Input
+                    type="text"
+                    name="searchKey"
+                    value={searchKey}
+                    placeholder="Search hero by name"
+                    size="lg"
+                    borderEndRadius={0}
+                    onChange={(event) => setSearchKey(event.target.value)}
+                  />
+                  <Button
+                    type="submit"
+                    size="lg"
+                    colorScheme="blue"
+                    borderStartRadius={0}
+                    onSubmit={handleSubmit}
+                  >
+                    Search
+                  </Button>
+                </Flex>
               </form>
             </Box>
             <Box
