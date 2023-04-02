@@ -110,7 +110,9 @@ export default function HeroPage({ hero }: { hero: Hero }) {
                         {key}
                       </Text>
                       <Progress
-                        value={Number(hero.powerstats[key as keyof Powerstats])}
+                        value={Number(
+                          hero.powerstats[key as keyof Powerstats] ?? 0
+                        )}
                       />
                     </>
                   ))}
