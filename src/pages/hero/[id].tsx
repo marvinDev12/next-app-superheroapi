@@ -37,7 +37,7 @@ export default function HeroPage({ hero }: { hero: Hero }) {
               variant="outline"
               aria-label="back"
               fontSize="20px"
-              onClick={() => router.back()}
+              onClick={() => router.push("/")}
               icon={<ArrowBackIcon />}
               mr="auto"
             />
