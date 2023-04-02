@@ -110,9 +110,13 @@ export default function HeroPage({ hero }: { hero: Hero }) {
                         {key}
                       </Text>
                       <Progress
-                        value={Number(
-                          hero.powerstats[key as keyof Powerstats] ?? 0
-                        )}
+                        value={
+                          !Number.isNaN(
+                            Number(hero.powerstats[key as keyof Powerstats])
+                          )
+                            ? Number(hero.powerstats[key as keyof Powerstats])
+                            : 0
+                        }
                       />
                     </>
                   ))}
