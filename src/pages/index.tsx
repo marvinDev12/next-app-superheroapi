@@ -11,10 +11,10 @@ import {
   Heading,
   useToast,
   Button,
+  Avatar,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import Image from "next/image";
 import Head from "next/head";
 
 export default function Index() {
@@ -116,15 +116,11 @@ export default function Index() {
                   heroes.map((hero) => (
                     <Link key={hero.id} href={`/hero/${hero.id}`}>
                       <Flex key={hero.id} direction="column">
-                        <Image
-                          alt={hero.name}
-                          width={150}
-                          height={200}
-                          style={{
-                            width: "150px",
-                            height: "200px",
-                          }}
+                        <Avatar
+                          size="2xl"
+                          name={hero.name}
                           src={hero.image.url}
+                          loading="lazy"
                         />
                         <Text>{hero.name}</Text>
                       </Flex>
